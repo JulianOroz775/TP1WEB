@@ -38,11 +38,7 @@ CREATE TABLE `marcas` (
 
 INSERT INTO `marcas` (`id`, `Marca`) VALUES
 (1, 'Honda'),
-(3, 'Honda'),
-(5, 'Honda'),
-(2, 'Toyota'),
-(4, 'Toyota'),
-(6, 'Toyota');
+(2, 'Toyota');
 
 -- --------------------------------------------------------
 
@@ -64,9 +60,7 @@ CREATE TABLE `vehiculos` (
 
 INSERT INTO `vehiculos` (`id`, `Marca`, `Kilometros`, `Patente`, `Detalles`) VALUES
 (1, 'Honda', 120, 'AC-123-DB', 'Honda Civic 2018'),
-(2, 'Toyota', 270, 'LMG891', 'Toyota Hilux 2012 4x'),
-(3, 'Honda', 120, 'AC-123-DB', 'Honda Civic 2018'),
-(4, 'Toyota', 270, 'LMG891', 'Toyota Hilux 2012 4x');
+(2, 'Toyota', 270, 'LMG891', 'Toyota Hilux 2012 4x');
 
 --
 -- Índices para tablas volcadas
