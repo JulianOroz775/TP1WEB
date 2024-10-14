@@ -1,4 +1,5 @@
-![WhatsApp Image 2024-09-17 at 11 37 13](https://github.com/user-attachments/assets/36ecca17-9ddb-4a5d-a02f-aa464a16bcb9)
+
+![WhatsApp Image 2024-10-14 at 16 27 42](https://github.com/user-attachments/assets/61478962-64d6-466c-b9dc-98a7d48c2b21)
 
 
 Marco Julian Ciano & Julian Oroz(FILA 123)
