@@ -1,0 +1,10 @@
+.item-task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li.finished .label {
+    opacity: .4;
+    text-decoration: line-through;
+}

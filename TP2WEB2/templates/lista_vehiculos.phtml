@@ -1,0 +1,33 @@
+<?php require 'templates/layout/header.phtml' ?>
+
+<?php if(isset($_SESSION['ID_USER'])) {?>
+    <?php require 'templates/form_alta_tarea.phtml' ?>
+<?php }?> 
+
+<ul class="list-group">
+<?php foreach($vehiculos as $vehiculo): ?>
+    <li class="list-group-item item-task <?php if($vehiculo->finalizada): ?> finished <?php endif ?>">
+        <div class="label">
+            <b><?= htmlspecialchars($vehiculo->Marca) ?></b> | <?=substr($vehiculo->Modelo,0,25)?> 
+        </div>
+        <div class="actions">
+                <a href="showVehiculo/<?= $vehiculo->id ?>" type="button" class='btn btn-success btn-sm ml-auto'>Ver mas</a>
+        </div>
+        <?php if(isset($_SESSION['ID_USER'])) {?>
+        <div class="actions">
+            <?php if(!$vehiculo->finalizada): ?> 
+                <a href="finalizar/<?= $vehiculo->id ?>" type="button" class='btn btn-success btn-sm ml-auto'>Finalizar</a> 
+            <?php endif ?>
+            <a href="eliminar/<?= $vehiculo->id ?>" type="button" class='btn btn-danger btn-sm ml-auto'>Borrar</a>
+            
+            <a href="editar/<?= $vehiculo->id ?>" type="button" class='btn btn-alert btn-sm ml-auto'>Editar</a>
+        </div>
+        <?php }?> 
+    </li>
+<?php endforeach ?>
+</ul>
+
+<p class="mt-3"><small>Mostrando <?=$count?> Vehiculos</small></p>
+
+
+<?php require 'templates/layout/footer.phtml' ?>
