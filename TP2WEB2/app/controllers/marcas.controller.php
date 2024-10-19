@@ -56,7 +56,7 @@ class marcasController {
             return $this->view->showError("No existe la tarea con el id=$id");
         }
 
-        // borro la tarea y redirijo
+        // borro la marca y redirijo
         $this->model->eraseMarca($id);
 
         header('Location: ' . BASE_URL);
@@ -69,7 +69,7 @@ class marcasController {
             return $this->view->showError("No existe la tarea con el id=$id");
         }
 
-        // actualiza la tarea
+        // actualiza la marca
         $this->model->updateMarca($id);
 
         header('Location: ' . BASE_URL);
