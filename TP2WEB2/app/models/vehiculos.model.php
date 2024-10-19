@@ -31,22 +31,5 @@ class vehiculosModel extends Model {
         return $vehiculo;
     }
  
-    public function insertTask($title, $description, $priority, $finished = false) { 
-        $query = $this->db->prepare('INSERT INTO tareas(titulo, descripcion, prioridad, finalizada) VALUES (?, ?, ?, ?)');
-        $query->execute([$title, $description, $priority, $finished]);
-    
-        $id = $this->db->lastInsertId();
-    
-        return $id;
-    }
- 
-    public function eraseTask($id) {
-        $query = $this->db->prepare('DELETE FROM tareas WHERE id = ?');
-        $query->execute([$id]);
-    }
 
-    public function updateTask($id) {        
-        $query = $this->db->prepare('UPDATE tareas SET finalizada = 1 WHERE id = ?');
-        $query->execute([$id]);
-    }
 }
