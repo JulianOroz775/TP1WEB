@@ -16,15 +16,7 @@ if (!empty( $_GET['action'])) {
     $action = $_GET['action'];
 }
 
-// tabla de ruteo
 
-// listar  -> TaskController->showTask();
-// nueva  -> TaskController->addTask();
-// eliminar/:ID  -> TaskController->deleteTask($id);
-// finalizar/:ID -> TaskController->finishTask($id);
-// ver/:ID -> TaskController->view($id); COMPLETAR
-
-// parsea la accion para separar accion real de parametros
 $params = explode('/', $action);
 
 switch ($params[0]) {
