@@ -49,11 +49,11 @@ class marcasController {
 
     
     public function deleteMarca($id) {
-        // obtengo la tarea por id
+        // obtengo la marca por id
         $task = $this->model->getMarca($id);
 
         if (!$task) {
-            return $this->view->showError("No existe la tarea con el id=$id");
+            return $this->view->showError("No existe la marca con el id=$id");
         }
 
         // borro la marca y redirijo
@@ -74,14 +74,11 @@ class marcasController {
 
         header('Location: ' . BASE_URL);
     }
-
     
    public function mod($id){
         $this->$id=$id;
         $this->view->mod($id);
-
    }
-
 
    public function modMarca($id) {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {

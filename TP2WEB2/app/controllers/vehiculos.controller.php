@@ -19,58 +19,76 @@ class vehiculosController {
 
     }
     public function showVehiculos($marca) {
-        // obtengo los vehiculos de la DB
-        $vehiculos = $this->model->getVehiculosMarca($marca);
+        $vehiculos = $this->model->getVehiculos($marca);
 
-        // mando los vehiculos a la vista
         return $this->view->showVehiculos($vehiculos);
     }
+    public function addVehiculo() { //TERMINAR
+        if (!isset($_POST['marca']) || empty($_POST['marca'])) {
+            return $this->view->showError('Falta completar el Modelo');
+        }
+        if (!isset($_POST['kilometros']) || empty($_POST['kilometros'])) {
+            return $this->view->showError('Falta completar los Kilometros');
+        }
+        if (!isset($_POST['patente']) || empty($_POST['patente'])) {
+            return $this->view->showError('Falta completar la Patente');
+        }
+        if (!isset($_POST['modelo']) || empty($_POST['modelo'])) {
+            return $this->view->showError('Falta completar el Modelo');
+        }
 
-    public function addTask() {
-        if (!isset($_POST['title']) || empty($_POST['title'])) {
-            return $this->view->showError('Falta completar el título');
-        }
+        $marca = $_POST['marca'];
+        $Kilometros = $_POST['kilometros'];
+        $Patente = $_POST['patente'];
+        $Modelo = $_POST['modelo'];
     
-        if (!isset($_POST['priority']) || empty($_POST['priority'])) {
-            return $this->view->showError('Falta completar la prioridad');
-        }
+        $id = $this->model->insertVehiculo($marca ,$Kilometros, $Patente, $Modelo );
     
-        $title = $_POST['title'];
-        $description = $_POST['description'];
-        $priority = $_POST['priority'];
-    
-        $id = $this->model->insertTask($title, $description, $priority);
-    
-        // redirijo al home (también podriamos usar un método de una vista para motrar un mensaje de éxito)
         header('Location: ' . BASE_URL);
     }
+    public function deleteVehiculo($id) {
 
-    
-    public function deleteTask($id) {
-        // obtengo la tarea por id
-        $task = $this->model->getVehiculo($id);
+        $vehiculo = $this->model->getVehiculo($id);
 
-        if (!$task) {
-            return $this->view->showError("No existe la tarea con el id=$id");
+        if (!$vehiculo) {
+            return $this->view->showError("No existe el vehiculo con el id=$id");
         }
 
-        // borro la tarea y redirijo
-        $this->model->eraseTask($id);
+        $this->model->eraseVehiculo($id);
 
         header('Location: ' . BASE_URL);
     }
+    public function finishVehiculo($id) {
+        $vehiculo = $this->model->getVehiculo($id);
 
-    public function finishTask($id) {
-        $task = $this->model->getVehiculo($id);
-
-        if (!$task) {
-            return $this->view->showError("No existe la tarea con el id=$id");
+        if (!$vehiculo) {
+            return $this->view->showError("No existe el Vehiculo con el id=$id");
         }
 
-        // actualiza la tarea
-        $this->model->updateTask($id);
+        $this->model->updateVehiculo($id);
 
         header('Location: ' . BASE_URL);
+    }
+    
+   public function mod($id){
+    $this->$id=$id;
+    $this->view->mod($id);
+}
+
+    public function modVehiculo($id) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $marca = $_POST['Marca'];
+            $kilometros = $_POST['Kilometros'];
+            $patente = $_POST['Patente'];
+            $modelo = $_POST['Modelo'];
+
+            $this->model->modVehiculo($id, $marca, $kilometros, $patente, $modelo);
+            
+            header('Location: ' . BASE_URL . 'listar');
+            exit;
+        } else {
+            echo "Método no permitido";
+        }
     }
 }
 

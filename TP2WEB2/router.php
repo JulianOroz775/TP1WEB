@@ -29,7 +29,7 @@ switch ($params[0]) {
         } else {
             echo "Error: No se proporcionó la marca.";
         }
-        break; // Agregado el break aquí
+        break;
 
     case 'showVehiculos':
         sessionAuthMiddleware($res);
@@ -42,7 +42,7 @@ switch ($params[0]) {
         } else {
             echo "Error: No se proporcionó la marca.";
         }
-        break; // Agregado el break aquí
+        break; 
     // viejo
     case 'listar':
         sessionAuthMiddleware($res);
@@ -56,18 +56,35 @@ switch ($params[0]) {
         $controller = new marcasController($res);
         $controller->addMarca();
         break;
+    case 'nuevo-auto':
+        sessionAuthMiddleware($res); // Setea $res->user si existe session
+        verifyAuthMiddleware($res); // Verifica que el usuario esté logueado o redirige a login
+        $controller = new vehiculosController($res);
+        $controller->addVehiculo();
+        break;
     case 'eliminar':
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res); // Verifica que el usuario esté logueado o redirige a login
         $controller = new marcasController($res);
         $controller->deleteMarca($params[1]);
         break;
+    case 'eliminar-auto':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res); // Verifica que el usuario esté logueado o redirige a login
+        $controller = new vehiculosController($res);
+        $controller->deleteVehiculo($params[1]);
+        break;
     case 'finalizar':
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res); // Verifica que el usuario esté logueado o redirige a login
         $controller = new marcasController($res);
         $controller->finishMarca($params[1]);
-        
+        break;
+    case 'finalizar-auto':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res); // Verifica que el usuario esté logueado o redirige a login
+        $controller = new vehiculosController($res);
+        $controller->finishVehiculo($params[1]);
         break;
     case 'editar':
         sessionAuthMiddleware($res);
@@ -75,12 +92,23 @@ switch ($params[0]) {
         $controller = new marcasController($res);
         $controller->mod($params[1]);
         break;
-        
+    case 'editar-auto':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new vehiculosController($res);
+        $controller->mod($params[1]);
+        break;   
     case 'modTask':
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
         $controller = new marcasController($res);
         $controller->modMarca($params[1]);
+        break;
+    case 'modVehiculo':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new vehiculosController($res);
+        $controller->modVehiculo($params[1]);
         break;
    
     case 'showLogin':

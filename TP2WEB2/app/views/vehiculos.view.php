@@ -8,9 +8,7 @@ class vehiculosView {
     }
 
     public function showVehiculo($vehiculo) {
-        // la vista define una nueva variable con la cantida de marcas
-      
-
+        
         // NOTA: el template va a poder acceder a todas las variables y constantes que tienen alcance en esta funcion
         require 'templates/lista_vehiculo.phtml';
     }
@@ -25,6 +23,9 @@ class vehiculosView {
 
     public function showError($error) {
         require 'templates/error.phtml';
+    }
+    public function mod($id){
+        require 'templates/editar_vehiculo.phtml';
     }
 
 }
